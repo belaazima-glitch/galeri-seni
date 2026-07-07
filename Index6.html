@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* CSS Ala Seni */
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            padding: 20px; 
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        h1 { color: #5d4037; text-align: center; text-shadow: 1px 1px 2px #fff; }
+
+        .card { 
+            background: rgba(255, 255, 255, 0.7);
+            border: none; 
+            padding: 20px; 
+            margin: 15px 0; 
+            border-radius: 15px; 
+            cursor: pointer; 
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover { background: rgba(255, 255, 255, 0.9); transform: scale(1.02); }
+
+        #myModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; }
+        .modal-content { 
+            background: #fff; 
+            margin: 10% auto; 
+            padding: 25px; 
+            width: 85%; 
+            border-radius: 20px; 
+            max-height: 70%; 
+            overflow-y: auto; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .close { float: right; font-size: 28px; cursor: pointer; color: #5d4037; }
+    </style>
+</head>
+<body>
+
+    <h1>Galeri Maestro Seni Dunia</h1>
+    <div id="list-container"></div>
+
+    <div id="myModal">
+        <div class="modal-content">
+            <span class="close" onclick="tutupModal()">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        const dataPelukis = [
+            { 
+                nama: "Vincent van Gogh", 
+                foto: "assets/Vincent-van-gogh.webp", 
+                lukisanImg: "assets/starry-night.webp", 
+                karya: "The Starry Night", 
+                sejarah: "Dilukis pada 1889. Lukisan ini menggambarkan pemandangan dari jendela kamar rumah sakit jiwa Saint-Rémy-de-Provence sebelum matahari terbit, dengan penambahan objek imajiner." 
+            },
+            { 
+                nama: "Leonardo da Vinci", 
+                foto: "assets/Leonardo-da-vinci.webp", 
+                lukisanImg: "assets/mona-lisa.webp", 
+                karya: "Mona Lisa", 
+                sejarah: "Dibuat antara 1503–1506. Lukisan ini terkenal karena ekspresi misterius subjeknya dan teknik 'sfumato' yang digunakan Leonardo untuk menciptakan transisi warna yang sangat halus." 
+            },
+            { 
+                nama: "Johannes Vermeer", 
+                foto: "assets/johannes-vermeer.jpg", 
+                lukisanImg: "assets/girl-with-pearl-earring.webp", 
+                karya: "Girl with a Pearl Earring", 
+                sejarah: "Sering disebut sebagai 'Mona Lisa dari Utara'. Lukisan ini adalah sebuah tronie, yaitu studi karakter yang menonjolkan penggunaan cahaya pada anting mutiara yang ikonik." 
+            },
+            { 
+                nama: "Gustav Klimt", 
+                foto: "assets/gustav-klimat.jpg", 
+                lukisanImg: "assets/the-kiss.webp", 
+                karya: "The Kiss", 
+                sejarah: "Diselesaikan antara 1907-1908. Lukisan ini menampilkan pasangan yang berpelukan dalam gaya dekoratif Art Nouveau, dengan penggunaan lapisan emas yang mewah dan detail geometris yang kompleks." 
+            },
+            { 
+                nama: "Claude Monet", 
+                foto: "assets/claude-monet.jpg", 
+                lukisanImg: "assets/water-lilies.jpeg", 
+                karya: "Water Lilies", 
+                sejarah: "Seri lukisan ini dibuat saat Monet berada di Giverny. Ia menghabiskan tahun-tahun terakhirnya melukis taman bunga teratai di rumahnya dengan teknik impresionisme yang menangkap cahaya dan pantulan air." 
+            }
+        ];
+
+        const container = document.getElementById('list-container');
+        dataPelukis.forEach((p, index) => {
+            container.innerHTML += `<div class="card" onclick="bukaModal(${index})"><h3>${p.nama}</h3></div>`;
+        });
+
+        function bukaModal(index) {
+            const p = dataPelukis[index];
+            console.logo("mencoba memuat
+            foto:, p.foto);//cek ini di console browser.
+            // ... sisa kode ... 
+            }
+            .getElementBd('modal-body').innerHTML = `
+                <center>
+                    <img src="${p.foto}" style="width:120px; height:120px; border-radius:50%; object-fit:cover;">
+                    <img src="${p.lukisanImg}" style="width:100%; margin-top:10px; border-radius:10px;">
+                </center>
+                <h2 style="text-align:center;">${p.nama}</h2>
+                <h3 style="text-align:center;">${p.karya}</h3>
+                <p style="text-align:justify;">${p.sejarah}</p>
+            `;
+            document.getElementById('myModal').style.display = "block";
+        }
+
+        function tutupModal() {
+            document.getElementById('myModal').style.display = "none";
+        }
+    </script>
+</body>
+</html>
